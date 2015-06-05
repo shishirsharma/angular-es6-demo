@@ -73,8 +73,8 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
     preprocessors: {
-      'src/**/*.js': ['babel'],
-      'test/**/*.js': ['babel']
+      'app/scripts/**/*.es6': ['babel'],
+      'test/spec/**/*.es6': ['babel']
     },
 
     babelPreprocessor: {
