@@ -1,13 +1,6 @@
 angular
-  .module('angularEs6DemoApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(($routeProvider) => {
+  .module('angularEs6DemoApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch'])
+  .config($routeProvider => {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
