@@ -1,11 +1,16 @@
 class AboutController {
-    constructor($scope) {
-	    $scope.awesomeThings = [
-	      'HTML5 Boilerplate',
-	      'AngularJS',
-	      'Karma'
-	    ];
+    constructor($routeParams, Info) {
+       this.$routeParams = $routeParams;
+       this.Info = Info;
+       this.getMoreInfo();
+    }
+
+    getMoreInfo() {
+       let self = this;
+       let id = this.$routeParams.infoId;
+       this.Info.get(id).then(result => self.result = result.data); 
     }
 }
-AboutController.$inject = ['$scope'];
+
+AboutController.$inject = ['$routeParams', 'Info'];
 angular.module('angularEs6DemoApp').controller('AboutCtrl', AboutController);

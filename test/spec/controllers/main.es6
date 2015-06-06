@@ -1,22 +1,31 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: MainCtrl', () => {
 
   // load the controller's module
   beforeEach(module('angularEs6DemoApp'));
 
-  var MainCtrl,
-    scope;
+  let MainCtrl, scope, httpBackend;
+
+  let infoData = [{
+        id: 1,
+        title: "HTML5 Boilerplate",
+        description: "HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites."
+  }];
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject( ($controller, $rootScope, $httpBackend) => {
     scope = $rootScope.$new();
+    httpBackend = $httpBackend;
+
     MainCtrl = $controller('MainCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should display a list of information', () => {
+    httpBackend.when('GET', 'data/info.json').respond(infoData);
+    httpBackend.flush();
+    expect(MainCtrl.results.length).toBe(1);
   });
 });

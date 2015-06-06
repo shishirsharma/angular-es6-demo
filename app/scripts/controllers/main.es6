@@ -1,11 +1,14 @@
 class MainController {
-    constructor($scope) {
-	    $scope.awesomeThings = [
-	      'HTML5 Boilerplate',
-	      'AngularJS',
-	      'Karma'
-	    ];
+    constructor(Info) {
+       this.Info = Info;
+       this.getInfo();
+    }
+
+    getInfo() {
+       let self = this;
+       this.Info.query().then(result => self.results = result.data); 
     }
 }
-MainController.$inject = ['$scope'];
+
+MainController.$inject = ['Info'];
 angular.module('angularEs6DemoApp').controller('MainCtrl', MainController);

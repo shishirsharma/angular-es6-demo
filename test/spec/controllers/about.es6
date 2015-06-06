@@ -1,22 +1,35 @@
 'use strict';
 
-describe('Controller: AboutCtrl', function () {
+describe('Controller: AboutCtrl', () => {
 
   // load the controller's module
   beforeEach(module('angularEs6DemoApp'));
 
-  var AboutCtrl,
-    scope;
+  let AboutCtrl, scope, httpBackend;
+  let itemData = {
+    id:1,
+    title: "Angular",
+    description: "AngularJS is a toolset for building the framework most suited to your application development."
+  };
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(($controller, $rootScope) => {
+  beforeEach(inject(($controller, $rootScope, $routeParams, $httpBackend) => {
     scope = $rootScope.$new();
+    httpBackend = $httpBackend;
+
+    $routeParams.infoId = 1;
+    httpBackend.expectGET('data/1.json').respond(itemData);
+
     AboutCtrl = $controller('AboutCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should display one information', () => {
+    httpBackend.flush();
+
+    expect(AboutCtrl.result.id).toBe(itemData.id);
+    expect(AboutCtrl.result.title).toBe(itemData.title);
+    expect(AboutCtrl.result.description).toBe(itemData.description);
   });
 });
