@@ -24,7 +24,7 @@ describe('Controller: MainCtrl', () => {
   }));
 
   it('should display a list of information', () => {
-    httpBackend.when('GET', 'data/info.json').respond(infoData);
+    httpBackend.when('GET', 'api/info.json').respond(infoData);
     httpBackend.flush();
     expect(MainCtrl.results.length).toBe(1);
   });

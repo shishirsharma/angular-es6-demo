@@ -18,7 +18,7 @@ describe('Controller: AboutCtrl', () => {
     httpBackend = $httpBackend;
 
     $routeParams.infoId = 1;
-    httpBackend.expectGET('data/1.json').respond(itemData);
+    httpBackend.expectGET('api/1.json').respond(itemData);
 
     AboutCtrl = $controller('AboutCtrl', {
       $scope: scope,

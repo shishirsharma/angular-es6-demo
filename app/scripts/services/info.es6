@@ -6,11 +6,11 @@ class InfoService {
 	}
 
 	query() {
-	  return this.$http.get('data/info.json');
+	  return this.$http.get('api/info.json');
 	}
 
 	get(id) {
-	  return this.$http.get(`data/${id}.json`);
+	  return this.$http.get(`api/${id}.json`);
 	}
 
 	static InfoFactory($http) {
