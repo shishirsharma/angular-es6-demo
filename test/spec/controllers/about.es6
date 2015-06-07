@@ -21,7 +21,8 @@ describe('Controller: AboutCtrl', () => {
     httpBackend.expectGET('data/1.json').respond(itemData);
 
     AboutCtrl = $controller('AboutCtrl', {
-      $scope: scope
+      $scope: scope,
+      $routeParams: $routeParams
     });
   }));
 

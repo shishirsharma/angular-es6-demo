@@ -32,7 +32,7 @@ module.exports = function(config) {
       // endbower
 
       'app/scripts/**/*.es6',
-      'test/mock/**/*.es6',
+      //'test/mock/**/*.es6',
       'test/spec/**/*.es6'
     ],
 
