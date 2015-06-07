@@ -1,3 +1,5 @@
+"ngInject";
+
 class MainController {
     constructor(Info) {
        this.Info = Info;
@@ -10,5 +12,4 @@ class MainController {
     }
 }
 
-MainController.$inject = ['Info'];
 angular.module('angularEs6DemoApp').controller('MainCtrl', MainController);

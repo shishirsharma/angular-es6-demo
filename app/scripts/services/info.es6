@@ -1,3 +1,5 @@
+"ngInject";
+
 class InfoService {
 	constructor($http) {
 	  this.$http = $http;
@@ -15,7 +17,5 @@ class InfoService {
 	  return new InfoService($http);
 	}
 }
-
-InfoService.InfoFactory.$inject = ['$http'];
 
 angular.module('angularEs6DemoApp').factory('Info', InfoService.InfoFactory);

@@ -1,3 +1,5 @@
+"ngInject";
+
 class AboutController {
     constructor($routeParams, Info) {
        this.$routeParams = $routeParams;
@@ -12,5 +14,4 @@ class AboutController {
     }
 }
 
-AboutController.$inject = ['$routeParams', 'Info'];
 angular.module('angularEs6DemoApp').controller('AboutCtrl', AboutController);
