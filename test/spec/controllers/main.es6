@@ -26,6 +26,6 @@ describe('Controller: MainCtrl', () => {
   it('should display a list of information', () => {
     httpBackend.when('GET', 'api/info.json').respond(infoData);
     httpBackend.flush();
-    expect(MainCtrl.results.length).toBe(1);
+    expect(scope.items.length).toBe(1);
   });
 });
