@@ -1,8 +1,9 @@
 "ngInject";
 
 class AboutController {
-    constructor($routeParams, Info) {
+    constructor($routeParams, $scope, Info) {
        this.$routeParams = $routeParams;
+       this.$scope = $scope;
        this.Info = Info;
        this.getMoreInfo();
     }
@@ -10,7 +11,7 @@ class AboutController {
     getMoreInfo() {
        let self = this;
        let id = this.$routeParams.infoId;
-       this.Info.get(id).then(result => self.result = result.data); 
+       this.Info.get(id).then(result => self.$scope.item = result.data); 
     }
 }
 
