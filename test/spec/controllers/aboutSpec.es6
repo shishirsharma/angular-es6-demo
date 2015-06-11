@@ -29,8 +29,6 @@ describe('Controller: AboutCtrl', () => {
   it('should display one information', () => {
     httpBackend.flush();
 
-    expect(scope.item.id).toBe(itemData.id);
-    expect(scope.item.title).toBe(itemData.title);
-    expect(scope.item.description).toBe(itemData.description);
+    expect(scope.item).toEqual(itemData);
   });
 });
