@@ -131,7 +131,6 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js',
           '<%= yeoman.app %>/scripts/{,*/}*.es6'
         ]
       },
@@ -139,7 +138,7 @@ module.exports = function (grunt) {
         options: {
           jshintrc: 'test/.jshintrc'
         },
-        src: ['test/spec/{,*/}*.js', 'test/spec/{,*/}*.es6']
+        src: ['test/spec/{,*/}*.es6']
       }
     },
 
@@ -198,11 +197,9 @@ module.exports = function (grunt) {
           es6: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
             detect: {
-              js: /'(.*\.js)'/gi,
               es6: /'(.*\.es6)'/gi
             },
             replace: {
-              js: '\'{{filePath}}\'',
               es6: '\'{{filePath}}\''
             }
           }
@@ -405,8 +402,8 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'copy:styles',
         'babel:dist',
+        'copy:styles',
       ],
       test: [
         'babel',
