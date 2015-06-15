@@ -82,7 +82,7 @@ module.exports = function(config) {
         sourceMap: 'inline'
       },
       filename: function (file) {
-        return file.originalPath.replace(/\/test\//, '/.tmp/');
+        return file.originalPath.replace(/\/test\//, '/.tmp/').replace(/\.js$/, '.es5.js');
       }
     }
 
