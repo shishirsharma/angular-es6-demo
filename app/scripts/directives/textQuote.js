@@ -1,3 +1,5 @@
+'use strict';
+'ngInject';
 
 class TextQuoteDirective { 
   constructor() {
@@ -8,7 +10,7 @@ class TextQuoteDirective {
     this.template = '<blockquote>{{textInfo}}</blockquote>';
   }
 
-  link (scope, element, attrs) {
+  link (scope) {
     scope.textInfo = scope.data.toUpperCase();
   }
 

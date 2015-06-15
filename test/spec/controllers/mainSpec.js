@@ -9,8 +9,8 @@ describe('Controller: MainCtrl', () => {
 
   let infoData = [{
         id: 1,
-        title: "HTML5 Boilerplate",
-        description: "HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites."
+        title: 'HTML5 Boilerplate',
+        description: 'HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.'
   }];
 
   // Initialize the controller and a mock scope

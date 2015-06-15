@@ -1,4 +1,5 @@
-"ngInject";
+'use strict';
+'ngInject';
 
 class InfoService {
 	constructor($http) {

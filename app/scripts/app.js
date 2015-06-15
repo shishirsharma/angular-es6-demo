@@ -1,4 +1,5 @@
-"ngInject";
+'use strict';
+'ngInject';
 
 angular
   .module('angularEs6DemoApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch'])

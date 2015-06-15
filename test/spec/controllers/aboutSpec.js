@@ -8,8 +8,8 @@ describe('Controller: AboutCtrl', () => {
   let AboutCtrl, scope, httpBackend;
   let itemData = {
     id:1,
-    title: "Angular",
-    description: "AngularJS is a toolset for building the framework most suited to your application development."
+    title: 'Angular',
+    description: 'AngularJS is a toolset for building the framework most suited to your application development.'
   };
 
   // Initialize the controller and a mock scope

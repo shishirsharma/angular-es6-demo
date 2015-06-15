@@ -1,4 +1,5 @@
-"ngInject";
+'use strict';
+'ngInject';
 
 class MainController {
     constructor(Info, $scope) {

@@ -31,9 +31,9 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
 
-      'app/scripts/**/*.es6',
-      //'test/mock/**/*.es6',
-      'test/spec/**/*.es6'
+      'app/scripts/**/*.js',
+      //'test/mock/**/*.js',
+      'test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
@@ -73,8 +73,8 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
     preprocessors: {
-      'app/scripts/**/*.es6': ['babel'],
-      'test/spec/**/*.es6': ['babel']
+      'app/scripts/**/*.js': ['babel'],
+      'test/spec/**/*.js': ['babel']
     },
 
     babelPreprocessor: {
@@ -82,7 +82,7 @@ module.exports = function(config) {
         sourceMap: 'inline'
       },
       filename: function (file) {
-        return file.originalPath.replace(/\/test\//, '/.tmp/').replace(/\.es6$/, '.js');
+        return file.originalPath.replace(/\/test\//, '/.tmp/');
       }
     }
 

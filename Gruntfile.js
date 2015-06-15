@@ -34,11 +34,11 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       babel: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.es6'],
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:babel:dist']
       },
       babelTest: {
-        files: ['test/spec/{,*/}*.es6'],
+        files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:babel:test', 'karma']
       },
       styles: {
@@ -120,14 +120,14 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.es6'
+          '<%= yeoman.app %>/scripts/{,*/}*.js'
         ]
       },
       test: {
         options: {
           jshintrc: 'test/.jshintrc'
         },
-        src: ['test/spec/{,*/}*.es6']
+        src: ['test/spec/{,*/}*.js']
       }
     },
 
@@ -183,13 +183,13 @@ module.exports = function (grunt) {
         src: '<%= karma.unit.configFile %>',
         ignorePath:  /\.\.\//,
         fileTypes:{
-          es6: {
+          js: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
             detect: {
-              es6: /'(.*\.es6)'/gi
+              '.es5.js': /'(.*\.js)'/gi
             },
             replace: {
-              es6: '\'{{filePath}}\''
+              '.es5.js': '\'{{filePath}}\','
             }
           }
         }
@@ -205,9 +205,9 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%= yeoman.app %>/scripts',
-            src: '{,*/}*.es6',
+            src: '{,*/}*.js',
             dest: '.tmp/scripts',
-            ext: '.js'
+            ext: '.es5.js'
           }
         ]
       },
@@ -215,9 +215,9 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'test/spec',
-          src: '{,*/}*.es6',
+          src: '{,*/}*.js',
           dest: '.tmp/spec',
-          ext: '.js'
+          ext: '.es5.js'
         }]
       }
     },
