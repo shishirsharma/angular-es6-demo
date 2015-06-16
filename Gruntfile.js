@@ -198,7 +198,8 @@ module.exports = function (grunt) {
 
     babel: {
       options: {
-        sourceMap: true
+        sourceMap: true,
+        experimental: true
       },
       dist: {
         files: [
@@ -454,7 +455,7 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
+    //'cdnify',
     'cssmin',
     'uglify',
     'filerev',
