@@ -13,10 +13,6 @@ class InfoService {
 	get(id) {
 	  return this.$http.get(`api/${id}.json`);
 	}
-
-	static InfoFactory($http) {
-	  return new InfoService($http);
-	}
 }
 
-angular.module('angularEs6DemoApp').factory('Info', InfoService.InfoFactory);
+angular.module('angularEs6DemoApp').factory('Info', ['$http', $http => new InfoService($http)]);
