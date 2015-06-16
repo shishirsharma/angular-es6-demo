@@ -15,4 +15,4 @@ class InfoService {
 	}
 }
 
-angular.module('angularEs6DemoApp').factory('Info', ['$http', $http => new InfoService($http)]);
+angular.module('angularEs6DemoApp').factory('Info', $http => new InfoService($http));
