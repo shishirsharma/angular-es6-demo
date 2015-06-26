@@ -1,8 +1,6 @@
 'use strict';
 'ngInject';
 
-const DIRECTIVE = new Map();
-
 class TextQuoteDirective {
   constructor($log) {
     this.restrict = 'E';
@@ -10,13 +8,16 @@ class TextQuoteDirective {
       data: '='
     };
     this.template = '<blockquote>{{textInfo}}</blockquote>';
+    this.$log = $log;
+  }
 
-    DIRECTIVE.set('$log', $log);
+  compile() {
+    return this.link.bind(this);
   }
 
   link (scope) {
     scope.textInfo = scope.data.toUpperCase();
-    DIRECTIVE.get('$log').info(scope.textInfo);
+    this.$log.info(scope.textInfo);
   }
 }
 
