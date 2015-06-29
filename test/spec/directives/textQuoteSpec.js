@@ -7,6 +7,14 @@ describe('Directive: textQuote', () => {
 
   let scope, compile, element;
 
+  // Polyfill Function.prototype.bind for PhantomJS
+  Function.prototype.bind = Function.prototype.bind || function (thisp) {
+    var fn = this;
+    return function () {
+      return fn.apply(thisp, arguments);
+    };
+  };
+
   // Initialize a mock scope
   beforeEach(inject(($rootScope, $compile) => {
     scope = $rootScope.$new();

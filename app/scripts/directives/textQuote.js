@@ -9,10 +9,8 @@ class TextQuoteDirective {
     };
     this.template = '<blockquote>{{textInfo}}</blockquote>';
     this.$log = $log;
-  }
 
-  compile() {
-    return this.link.bind(this);
+    this.link = this.link.bind(this);
   }
 
   link (scope) {
