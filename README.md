@@ -1,4 +1,4 @@
-# angularJS ES6 (Babel transpiler), Grunt &amp; Bower
+# AngularJS ES6, Grunt &amp; Bower
 
 ## Example Component Classes
 
