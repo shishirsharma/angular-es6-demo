@@ -2,7 +2,7 @@
 'ngInject';
 
 angular
-  .module('angularEs6DemoApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch'])
+  .module('angularEs6DemoApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch'])
   .config($routeProvider => {
     $routeProvider
       .when('/', {

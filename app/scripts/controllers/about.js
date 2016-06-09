@@ -10,9 +10,9 @@ class AboutController {
     }
 
     getMoreInfo() {
-       let self = this;
-       let id = this.$routeParams.infoId;
-       this.Info.get(id).then(result => self.$scope.item = result.data); 
+       const self = this;
+       const id = this.$routeParams.infoId;
+       this.Info.get(id).then(result => self.$scope.item = result.data);
     }
 }
 

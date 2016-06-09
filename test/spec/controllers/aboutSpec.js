@@ -6,7 +6,7 @@ describe('Controller: AboutCtrl', () => {
   beforeEach(module('angularEs6DemoApp'));
 
   let AboutCtrl, scope, httpBackend;
-  let itemData = {
+  const itemData = {
     id:1,
     title: 'Angular',
     description: 'AngularJS is a toolset for building the framework most suited to your application development.'
@@ -22,7 +22,7 @@ describe('Controller: AboutCtrl', () => {
 
     AboutCtrl = $controller('AboutCtrl', {
       $scope: scope,
-      $routeParams: $routeParams
+      $routeParams
     });
   }));
 

@@ -9,8 +9,8 @@ class MainController {
     }
 
     getInfo() {
-       let self = this;
-       this.Info.query().then(result => self.$scope.items = result.data); 
+       const self = this;
+       this.Info.query().then(result => self.$scope.items = result.data);
     }
 }
 

@@ -9,7 +9,7 @@ describe('Directive: textQuote', () => {
 
   // Polyfill Function.prototype.bind for PhantomJS
   Function.prototype.bind = Function.prototype.bind || function (thisp) {
-    var fn = this;
+    const fn = this;
     return function () {
       return fn.apply(thisp, arguments);
     };

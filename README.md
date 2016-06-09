@@ -12,7 +12,7 @@ class MainController {
     }
 
     getInfo() {
-       let self = this;
+       const self = this;
        this.Info.query().then(result => self.$scope.items = result.data);
     }
 }
@@ -76,7 +76,7 @@ describe('Controller: MainCtrl', () => {
 
   let MainCtrl, scope, httpBackend;
 
-  let infoData = [{
+  const infoData = [{
         id: 1,
         title: 'HTML5 Boilerplate',
         description: 'HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.'
@@ -112,7 +112,7 @@ describe('Directive: textQuote', () => {
 
   // Polyfill Function.prototype.bind for PhantomJS
   Function.prototype.bind = Function.prototype.bind || function (thisp) {
-    var fn = this;
+    const fn = this;
     return function () {
       return fn.apply(thisp, arguments);
     };

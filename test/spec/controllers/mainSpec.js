@@ -7,7 +7,7 @@ describe('Controller: MainCtrl', () => {
 
   let MainCtrl, scope, httpBackend;
 
-  let infoData = [{
+  const infoData = [{
         id: 1,
         title: 'HTML5 Boilerplate',
         description: 'HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.'
