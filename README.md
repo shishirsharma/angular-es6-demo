@@ -5,15 +5,13 @@
 ### Controller
 ```
 class MainController {
-    constructor(Info, $scope) {
+    constructor(Info) {
        this.Info = Info;
-       this.$scope = $scope;
        this.getInfo();
     }
 
     getInfo() {
-       const self = this;
-       this.Info.query().then(result => self.$scope.items = result.data);
+       this.Info.query().then(result => this.items = result.data);
     }
 }
 
@@ -87,15 +85,13 @@ describe('Controller: MainCtrl', () => {
     scope = $rootScope.$new();
     httpBackend = $httpBackend;
 
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-    });
+    MainCtrl = $controller('MainCtrl', {});
   }));
 
   it('should display a list of information', () => {
     httpBackend.when('GET', 'api/info.json').respond(infoData);
     httpBackend.flush();
-    expect(scope.items.length).toBe(1);
+    expect(MainCtrl.items.length).toBe(1);
   });
 });
 ```
@@ -144,14 +140,13 @@ describe('Directive: textQuote', () => {
 
 ```
 npm install
-bower install
-grunt serve
+npm run serve
 ```
 
 ## Test
 
 ```
-grunt test
+npm test
 ```
 
 ## Contributing

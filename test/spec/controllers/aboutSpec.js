@@ -7,7 +7,7 @@ describe('Controller: AboutCtrl', () => {
 
   let AboutCtrl, scope, httpBackend;
   const itemData = {
-    id:1,
+    id: 1,
     title: 'Angular',
     description: 'AngularJS is a toolset for building the framework most suited to your application development.'
   };
@@ -21,7 +21,6 @@ describe('Controller: AboutCtrl', () => {
     httpBackend.expectGET('api/1.json').respond(itemData);
 
     AboutCtrl = $controller('AboutCtrl', {
-      $scope: scope,
       $routeParams
     });
   }));
@@ -29,6 +28,6 @@ describe('Controller: AboutCtrl', () => {
   it('should display one information', () => {
     httpBackend.flush();
 
-    expect(scope.item).toEqual(itemData);
+    expect(AboutCtrl.item).toEqual(itemData);
   });
 });

@@ -18,14 +18,12 @@ describe('Controller: MainCtrl', () => {
     scope = $rootScope.$new();
     httpBackend = $httpBackend;
 
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-    });
+    MainCtrl = $controller('MainCtrl', {});
   }));
 
   it('should display a list of information', () => {
     httpBackend.when('GET', 'api/info.json').respond(infoData);
     httpBackend.flush();
-    expect(scope.items.length).toBe(1);
+    expect(MainCtrl.items.length).toBe(1);
   });
 });

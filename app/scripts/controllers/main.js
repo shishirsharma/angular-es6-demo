@@ -2,15 +2,13 @@
 'ngInject';
 
 class MainController {
-  constructor(Info, $scope) {
+  constructor(Info) {
     this.Info = Info;
-    this.$scope = $scope;
     this.getInfo();
   }
 
   getInfo() {
-    const self = this;
-    this.Info.query().then(result => self.$scope.items = result.data);
+    this.Info.query().then(result => this.items = result.data);
   }
 }
 
