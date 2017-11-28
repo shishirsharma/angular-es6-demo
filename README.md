@@ -1,4 +1,4 @@
-# AngularJS ES6, Grunt &amp; Bower
+# AngularJS 1.5 (ES2015), Grunt &amp; Bower
 
 ## Example Component Classes
 
