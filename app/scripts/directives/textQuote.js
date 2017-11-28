@@ -13,7 +13,7 @@ class TextQuoteDirective {
     this.link = this.link.bind(this);
   }
 
-  link (scope) {
+  link(scope) {
     scope.textInfo = scope.data.toUpperCase();
     this.$log.info(scope.textInfo);
   }
