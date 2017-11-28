@@ -3,7 +3,7 @@
 describe('Directive: textQuote', () => {
 
   // load the controller's module
-  beforeEach(module('angularEs6DemoApp'));
+  beforeEach(module('demoApp'));
 
   let scope, compile, element;
 

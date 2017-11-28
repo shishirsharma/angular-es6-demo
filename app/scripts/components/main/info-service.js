@@ -1,8 +1,9 @@
 'use strict';
-'ngInject';
 
 class InfoService {
   constructor($http) {
+    'ngInject';
+    
     this.$http = $http;
   }
 
@@ -15,4 +16,4 @@ class InfoService {
   }
 }
 
-angular.module('angularEs6DemoApp').factory('Info', $http => new InfoService($http));
+angular.module('demoApp').factory('Info', $http => new InfoService($http));

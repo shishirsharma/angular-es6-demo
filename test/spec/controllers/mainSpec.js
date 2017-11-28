@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', () => {
 
   // load the controller's module
-  beforeEach(module('angularEs6DemoApp'));
+  beforeEach(module('demoApp'));
 
   let MainCtrl, scope, httpBackend;
 

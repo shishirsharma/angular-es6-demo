@@ -3,7 +3,7 @@
 describe('Controller: AboutCtrl', () => {
 
   // load the controller's module
-  beforeEach(module('angularEs6DemoApp'));
+  beforeEach(module('demoApp'));
 
   let AboutCtrl, scope, httpBackend;
   const itemData = {

@@ -1,21 +1,22 @@
 'use strict';
 'ngInject';
 
-angular
-  .module('angularEs6DemoApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch'])
+angular.module('demoApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch'])
   .config($routeProvider => {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl as ctrl'
+        template: '<main></main>'
       })
       .when('/about/:infoId', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl as ctrl'
+        template: '<about id="$resolve.infoId"></about>',
+        resolve: {
+          infoId: $route => {
+            return $route.current.params.infoId;
+          }
+        }
       })
       .when('/contact', {
-        templateUrl: 'views/contact.html',
-        controller: 'ContactCtrl as ctrl'
+        template: '<contact></contact>'
       })
       .otherwise({
         redirectTo: '/'

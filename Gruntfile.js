@@ -37,11 +37,11 @@ module.exports = function(grunt) {
         tasks: ['wiredep']
       },
       babel: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/scripts/{,**/}*.js'],
         tasks: ['newer:babel:dist']
       },
       babelTest: {
-        files: ['test/spec/{,*/}*.js'],
+        files: ['test/spec/{,**/}*.js'],
         tasks: ['newer:babel:test', 'karma']
       },
       styles: {
@@ -123,14 +123,14 @@ module.exports = function(grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/scripts/{,**/}*.js'
         ]
       },
       test: {
         options: {
           jshintrc: 'test/.jshintrc'
         },
-        src: ['test/spec/{,*/}*.js']
+        src: ['test/spec/{,**/}*.js']
       }
     },
 
@@ -208,7 +208,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/scripts',
-          src: '{,*/}*.js',
+          src: '{,**/}*.js',
           dest: '.tmp/scripts',
           ext: '.es5.js'
         }]
@@ -217,7 +217,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'test/spec',
-          src: '{,*/}*.js',
+          src: '{,**/}*.js',
           dest: '.tmp/spec',
           ext: '.es5.js'
         }]
@@ -228,7 +228,7 @@ module.exports = function(grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
+          '<%= yeoman.dist %>/scripts/{,**/}*.js',
           '<%= yeoman.dist %>/styles/{,*/}*.css',
           '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*'
@@ -328,7 +328,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
+          src: ['*.html', 'apps/{,*/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -366,7 +366,7 @@ module.exports = function(grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'views/{,*/}*.html',
+            'apps/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*'
           ]

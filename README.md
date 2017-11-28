@@ -1,65 +1,130 @@
-# AngularJS 1.5 (ES2015), Grunt &amp; Bower
+# AngularJS 1.5 (ES2015) with components &amp; Grunt &amp; Bower
 
 ## Example Component Classes
 
-### Controller
+### Main app
+```
+angular.module('demoApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch'])
+  .config($routeProvider => {
+    $routeProvider
+      .when('/', {
+        template: '<main></main>'
+      })
+      .when('/about/:infoId', {
+        template: '<about id="$resolve.infoId"></about>',
+        resolve: {
+          infoId: $route => {
+            return $route.current.params.infoId;
+          }
+        }
+      })
+      .when('/contact', {
+        template: '<contact></contact>'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
+```
+
+### Component 1
 ```
 class MainController {
-    constructor(Info) {
-       this.Info = Info;
-       this.getInfo();
-    }
+  constructor(Info) {
+    this.Info = Info;
+  }
 
-    getInfo() {
-       this.Info.query().then(result => this.items = result.data);
-    }
+  $onInit() {
+    this.items = [];
+    this.getInfo();
+  }
+
+  getInfo() {
+    this.Info.query().then(result => this.items = result.data);
+  }
 }
 
-angular.module('angularEs6DemoApp').controller('MainCtrl', MainController);
+angular.module('demoApp')
+  .component('main', {
+    controller: MainController,
+    controllerAs: 'ctrl',
+    templateUrl: 'scripts/components/main/main.html'
+  });
 ```
 
-### Directive
+### Component 2
 
 ```
-class TextQuoteDirective {
+class TextQuoteController {
   constructor($log) {
-    this.restrict = 'E';
-    this.scope = {
-      data: '='
-    };
-    this.template = '<blockquote>{{textInfo}}</blockquote>';
     this.$log = $log;
-
-    this.link = this.link.bind(this);
   }
 
-  link (scope) {
-    scope.textInfo = scope.data.toUpperCase();
-    this.$log.info(scope.textInfo);
+  $onInit() {
+    this.textInfo = this.data.toUpperCase();
+    this.$log.info(this.textInfo);
   }
 }
 
-angular.module('angularEs6DemoApp').directive('textQuote', $log => new TextQuoteDirective($log));
+angular.module('demoApp')
+  .component('textQuote', {
+    bindings: {
+      data: '='
+    },
+    controller: TextQuoteController,
+    controllerAs: 'ctrl',
+    template: '<blockquote>{{ctrl.textInfo}}</blockquote>'
+  });
+```
+
+### Component 3
+
+```
+class AboutController {
+  constructor(Info) {
+    this.Info = Info;
+  }
+
+  $onInit() {
+    this.item = '';
+    this.getMoreInfo();
+  }
+
+  getMoreInfo() {
+    const id = this.id;
+    this.Info.get(id).then(result => this.item = result.data);
+  }
+}
+
+angular.module('demoApp')
+  .component('about', {
+    controller: AboutController,
+    controllerAs: 'ctrl',
+    templateUrl: 'scripts/components/about/about.html',
+    bindings: {
+      id: '<'
+    }
+  });
 ```
 
 ### Service
 
 ```
 class InfoService {
-	constructor($http) {
-	  this.$http = $http;
-	}
+  constructor($http) {
+    this.$http = $http;
+  }
 
-	query() {
-	  return this.$http.get('api/info.json');
-	}
+  query() {
+    return this.$http.get('api/info.json');
+  }
 
-	get(id) {
-	  return this.$http.get(`api/${id}.json`);
-	}
+  get(id) {
+    return this.$http.get(`api/${id}.json`);
+  }
 }
 
-angular.module('angularEs6DemoApp').factory('Info', $http => new InfoService($http));
+angular.module('demoApp').factory('Info', $http => new InfoService($http));
 ```
 
 ## Tests
@@ -70,7 +135,7 @@ angular.module('angularEs6DemoApp').factory('Info', $http => new InfoService($ht
 describe('Controller: MainCtrl', () => {
 
   // load the controller's module
-  beforeEach(module('angularEs6DemoApp'));
+  beforeEach(module('demoApp'));
 
   let MainCtrl, scope, httpBackend;
 
@@ -102,7 +167,7 @@ describe('Controller: MainCtrl', () => {
 describe('Directive: textQuote', () => {
 
   // load the controller's module
-  beforeEach(module('angularEs6DemoApp'));
+  beforeEach(module('demoApp'));
 
   let scope, compile, element;
 
