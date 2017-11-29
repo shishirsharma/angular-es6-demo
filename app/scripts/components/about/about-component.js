@@ -22,7 +22,7 @@ angular.module('demoApp')
   .component('about', {
     controller: AboutController,
     controllerAs: 'ctrl',
-    templateUrl: 'views/about.html',
+    templateUrl: 'scripts/components/about/about.html',
     bindings: {
       id: '<'
     }

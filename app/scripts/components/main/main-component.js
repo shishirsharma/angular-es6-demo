@@ -20,5 +20,5 @@ angular.module('demoApp')
   .component('main', {
     controller: MainController,
     controllerAs: 'ctrl',
-    templateUrl: 'views/main.html'
+    templateUrl: 'scripts/components/main/main.html'
   });

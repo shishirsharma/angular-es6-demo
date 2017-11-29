@@ -1,4 +1,4 @@
-# AngularJS 1.6 (ES2015+) with components &amp; Grunt &amp; Bower
+# AngularJS 1.6 (ES2015+) with components
 
 ## Example Component Classes
 
@@ -57,7 +57,7 @@ angular.module('demoApp')
   .component('main', {
     controller: MainController,
     controllerAs: 'ctrl',
-    templateUrl: 'views/main.html'
+    templateUrl: 'scripts/components/main/main.html'
   });
 ```
 
@@ -109,7 +109,7 @@ angular.module('demoApp')
   .component('about', {
     controller: AboutController,
     controllerAs: 'ctrl',
-    templateUrl: 'views/about.html',
+    templateUrl: 'scripts/components/about/about.html',
     bindings: {
       id: '<'
     }
