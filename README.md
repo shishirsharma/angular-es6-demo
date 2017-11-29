@@ -4,8 +4,17 @@
 
 ### Main app
 ```
-angular.module('demoApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch'])
+angular.module('demoApp', [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ])
   .config($routeProvider => {
+    'ngInject';
+
     $routeProvider
       .when('/', {
         template: '<main></main>'
