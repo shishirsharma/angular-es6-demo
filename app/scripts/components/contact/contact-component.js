@@ -13,5 +13,5 @@ angular.module('demoApp')
   .component('contact', {
     controller: ContactController,
     controllerAs: 'ctrl',
-    templateUrl: 'scripts/components/contact/contact.html',
+    templateUrl: 'views/contact.html'
   });

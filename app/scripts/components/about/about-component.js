@@ -9,7 +9,7 @@ class AboutController {
 
   $onInit() {
     this.item = '';
-    this.getMoreInfo();
+    this.getMoreInfo();;
   }
 
   getMoreInfo() {
@@ -22,7 +22,7 @@ angular.module('demoApp')
   .component('about', {
     controller: AboutController,
     controllerAs: 'ctrl',
-    templateUrl: 'scripts/components/about/about.html',
+    templateUrl: 'views/about.html',
     bindings: {
       id: '<'
     }
