@@ -163,7 +163,7 @@ describe('main', () => {
 });
 ```
 
-### Directive
+### Component 2
 
 ```
 describe('textQuote', () => {
