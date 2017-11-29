@@ -1,29 +1,31 @@
 'use strict';
 
-describe('Controller: MainCtrl', () => {
+describe('main', () => {
 
-  // load the controller's module
+  // load the component controller's module
   beforeEach(module('demoApp'));
 
-  let MainCtrl, scope, httpBackend;
-
-  const infoData = [{
-        id: 1,
-        title: 'HTML5 Boilerplate',
-        description: 'HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.'
+  const mockInfo = [{
+    id: 1,
+    title: 'HTML5 Boilerplate',
+    description: 'HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.'
   }];
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject( ($controller, $rootScope, $httpBackend) => {
-    scope = $rootScope.$new();
+  let ctrl, httpBackend;
+
+  // Initialize the component controller
+  beforeEach(inject(($componentController, $httpBackend) => {
+    const componentController = $componentController;
     httpBackend = $httpBackend;
 
-    MainCtrl = $controller('MainCtrl', {});
+    ctrl = componentController('main', null, {});
+    ctrl.$onInit();
   }));
 
   it('should display a list of information', () => {
-    httpBackend.when('GET', 'api/info.json').respond(infoData);
+    httpBackend.when('GET', 'api/info.json').respond(mockInfo);
     httpBackend.flush();
-    expect(MainCtrl.items.length).toBe(1);
+
+    expect(ctrl.items.length).toBe(1);
   });
 });

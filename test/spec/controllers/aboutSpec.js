@@ -1,33 +1,34 @@
 'use strict';
 
-describe('Controller: AboutCtrl', () => {
+describe('about', () => {
 
-  // load the controller's module
+  // load the component controller's module
   beforeEach(module('demoApp'));
 
-  let AboutCtrl, scope, httpBackend;
-  const itemData = {
+  const mockInfo = {
     id: 1,
     title: 'Angular',
     description: 'AngularJS is a toolset for building the framework most suited to your application development.'
   };
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(($controller, $rootScope, $routeParams, $httpBackend) => {
-    scope = $rootScope.$new();
+  let ctrl, httpBackend;
+
+  // Initialize the component controller
+  beforeEach(inject(($componentController, $httpBackend) => {
+    const componentController = $componentController;
     httpBackend = $httpBackend;
 
-    $routeParams.infoId = 1;
-    httpBackend.expectGET('api/1.json').respond(itemData);
-
-    AboutCtrl = $controller('AboutCtrl', {
-      $routeParams
+    ctrl = componentController('about', null, {
+      id: 1
     });
+    ctrl.$onInit();
+
+    httpBackend.expectGET('api/1.json').respond(mockInfo);
   }));
 
   it('should display one information', () => {
     httpBackend.flush();
 
-    expect(AboutCtrl.item).toEqual(itemData);
+    expect(ctrl.item).toEqual(mockInfo);
   });
 });

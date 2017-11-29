@@ -129,34 +129,36 @@ angular.module('demoApp').factory('Info', $http => new InfoService($http));
 
 ## Tests
 
-### Controller
+### Component 1
 
 ```
-describe('Controller: MainCtrl', () => {
+describe('main', () => {
 
-  // load the controller's module
+  // load the component controller's module
   beforeEach(module('demoApp'));
 
-  let MainCtrl, scope, httpBackend;
-
-  const infoData = [{
-        id: 1,
-        title: 'HTML5 Boilerplate',
-        description: 'HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.'
+  const mockInfo = [{
+    id: 1,
+    title: 'HTML5 Boilerplate',
+    description: 'HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.'
   }];
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject( ($controller, $rootScope, $httpBackend) => {
-    scope = $rootScope.$new();
+  let ctrl, httpBackend;
+
+  // Initialize the component controller
+  beforeEach(inject(($componentController, $httpBackend) => {
+    const componentController = $componentController;
     httpBackend = $httpBackend;
 
-    MainCtrl = $controller('MainCtrl', {});
+    ctrl = componentController('main', null, {});
+    ctrl.$onInit();
   }));
 
   it('should display a list of information', () => {
-    httpBackend.when('GET', 'api/info.json').respond(infoData);
+    httpBackend.when('GET', 'api/info.json').respond(mockInfo);
     httpBackend.flush();
-    expect(MainCtrl.items.length).toBe(1);
+
+    expect(ctrl.items.length).toBe(1);
   });
 });
 ```
@@ -164,39 +166,22 @@ describe('Controller: MainCtrl', () => {
 ### Directive
 
 ```
-describe('Directive: textQuote', () => {
-
-  // load the controller's module
+describe('textQuote', () => {
+  // load the component controller's module
   beforeEach(module('demoApp'));
 
-  let scope, compile, element;
+  let ctrl;
 
-  // Polyfill Function.prototype.bind for PhantomJS
-  Function.prototype.bind = Function.prototype.bind || function (thisp) {
-    const fn = this;
-    return function () {
-      return fn.apply(thisp, arguments);
-    };
-  };
-
-  // Initialize a mock scope
-  beforeEach(inject(($rootScope, $compile) => {
-    scope = $rootScope.$new();
-    compile = $compile;
-
-    scope.contactInfo = 'Lorem ipsum';
-    element = angular.element('<text-quote data="contactInfo"></text-quote>');
-
-    compile(element)(scope);
-    scope.$digest();
+  // Initialize the component controller
+  beforeEach(inject($componentController => {
+    ctrl = $componentController('textQuote', null, {
+      data: 'Lorem ipsum'
+    });
+    ctrl.$onInit();
   }));
 
-  it('should display a blockquote tag', () => {
-    expect(element.find('blockquote').length).toBe(1);
-  });
-
   it('should display the information', () => {
-    expect(element.html()).toContain('LOREM IPSUM');
+    expect(ctrl.textInfo).toContain('LOREM IPSUM');
   });
 });
 ```
@@ -206,6 +191,12 @@ describe('Directive: textQuote', () => {
 ```
 npm install
 npm run serve
+```
+
+## Build
+
+```
+npm run build
 ```
 
 ## Test
