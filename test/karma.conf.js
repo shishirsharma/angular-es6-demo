@@ -37,8 +37,7 @@ module.exports = function(config) {
     ],
 
     // list of files / patterns to exclude
-    exclude: [
-    ],
+    exclude: [],
 
     // web server port
     port: 8080,
@@ -80,9 +79,9 @@ module.exports = function(config) {
     babelPreprocessor: {
       options: {
         sourceMap: 'inline',
-        presets: ['es2015']
+        presets: ['env']
       },
-      filename: function (file) {
+      filename: function(file) {
         return file.originalPath.replace(/\/test\//, '/.tmp/').replace(/\.js$/, '.es5.js');
       }
     }
