@@ -9,7 +9,7 @@ class AboutController {
 
   $onInit() {
     this.item = '';
-    this.getMoreInfo();;
+    this.getMoreInfo();
   }
 
   getMoreInfo() {
