@@ -143,9 +143,7 @@ module.exports = function(grunt) {
     // Make sure code styles are up to par
     jscs: {
       options: {
-        config: '.jscsrc',
-        esnext: true, // If you use ES6 http://jscs.info/overview.html#esnext
-        verbose: true
+        config: '.jscsrc'
       },
       all: {
         src: [
