@@ -78,7 +78,7 @@ class TextQuoteController {
 angular.module('demoApp')
   .component('textQuote', {
     bindings: {
-      data: '='
+      data: '<'
     },
     controller: TextQuoteController,
     controllerAs: 'ctrl',
