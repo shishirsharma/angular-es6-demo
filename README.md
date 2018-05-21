@@ -1,4 +1,4 @@
-# AngularJS 1.6 (ES2015+) with components
+# AngularJS 1.7 (ES2015+) with components
 
 ## Example Component Classes
 
